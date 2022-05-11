@@ -2,7 +2,7 @@
   "pluginType": "DB",
   "pluginId": "postgres-plugin",
   "unpublishedAction": {
-    "name": "DeleteQuery",
+    "name": "UpdateQuery",
     "datasource": {
       "name": "05140744",
       "pluginId": "postgres-plugin",
@@ -13,12 +13,12 @@
       "policies": [],
       "userPermissions": []
     },
-    "pageId": "Page1",
+    "pageId": "crudpage_1",
     "actionConfiguration": {
       "timeoutInMillisecond": 10000,
       "paginationType": "NONE",
       "encodeParamsToggle": true,
-      "body": "DELETE FROM public.\"category\"\n  WHERE \"last_update\" = {{Table1.triggeredRow.last_update}};",
+      "body": "UPDATE public.\"category\" SET\n\t\t\"name\" = '{{update_col_2.text}}',\n    \"category_id\" = '{{update_col_3.text}}'\nWHERE \"last_update\" = {{Table1.selectedRow.last_update}};",
       "pluginSpecifiedTemplates": [
         {
           "value": true
@@ -30,14 +30,16 @@
     "invalids": [],
     "messages": [],
     "jsonPathKeys": [
-      "Table1.triggeredRow.last_update"
+      "Table1.selectedRow.last_update",
+      "update_col_2.text",
+      "update_col_3.text"
     ],
     "userSetOnLoad": false,
     "confirmBeforeExecute": false,
     "policies": [],
     "userPermissions": []
   },
-  "id": "Page1_DeleteQuery",
+  "id": "crudpage_1_UpdateQuery",
   "deleted": false,
-  "gitSyncId": "627bb29da25e357d62428188_627bb2a9a25e357d62428190"
+  "gitSyncId": "627bb29da25e357d62428188_627bb2a9a25e357d6242818e"
 }
